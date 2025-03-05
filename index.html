@@ -3,16 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Card Sorting Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <h1>Card Sorting Game</h1>
-    <p>Instructions: Drag the card below and drop it, or click an insertion point, to place it in the correct position (ascending order).</p>
-    <div id="placed-cards"></div>
-    <div id="current-card-container">
-        <div id="current-card" draggable="true"></div>
+    
+    <!-- Start Screen -->
+    <div id="start-screen">
+        <h2>Select a Deck to Begin</h2>
+        <div id="deck-selection">
+            <div class="deck-option" data-deck="data/deck.json">
+                <img src="assets/basic/img1.jpg" alt="Basic Deck" class="deck-thumbnail">
+                <div class="deck-title">Basic Events</div>
+                <div class="deck-description">A simple sequence of 4 basic events.</div>
+            </div>
+            
+            <div class="deck-option" data-deck="data/geography-deck.json">
+                <img src="assets/geography/mountain.jpg" alt="Geography Deck" class="deck-thumbnail">
+                <div class="deck-title">Geography</div>
+                <div class="deck-description">Learn about the sequence of geological formations.</div>
+            </div>
+            
+            <div class="deck-option" data-deck="data/history-deck.json">
+                <img src="assets/history/ancient.jpg" alt="History Deck" class="deck-thumbnail">
+                <div class="deck-title">History Timeline</div>
+                <div class="deck-description">Order events from ancient to contemporary times.</div>
+            </div>
+        </div>
+        <button id="start-button" disabled>Start Game</button>
     </div>
-    <div id="message"></div>
-    <script src="script.js"></script>
+    
+    <!-- Game Container -->
+    <div id="game-container">
+        <p id="game-instructions">Instructions: Drag the card below and drop it, or click an insertion point, to place it in the correct position (ascending order).</p>
+        <div id="placed-cards"></div>
+        <div id="current-card-container">
+            <div id="current-card" draggable="true"></div>
+        </div>
+        <div id="message"></div>
+        <button id="back-button">← Back to Deck Selection</button>
+    </div>
+    
+    <script src="js/script.js"></script>
 </body>
 </html>

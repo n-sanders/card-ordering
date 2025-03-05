@@ -1,0 +1,6 @@
+[
+    { "image": "assets/geography/mountain.jpg", "text": "Mountain Formation", "order": 1 },
+    { "image": "assets/geography/erosion.jpg", "text": "Water Erosion", "order": 2 },
+    { "image": "assets/geography/valley.jpg", "text": "Valley Creation", "order": 3 },
+    { "image": "assets/geography/canyon.jpg", "text": "Canyon Deepening", "order": 4 }
+]

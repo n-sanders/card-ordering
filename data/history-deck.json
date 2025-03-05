@@ -1,0 +1,7 @@
+[
+    { "image": "assets/history/ancient.jpg", "text": "Ancient Era", "order": 1 },
+    { "image": "assets/history/medieval.jpg", "text": "Medieval Period", "order": 2 },
+    { "image": "assets/history/renaissance.jpg", "text": "Renaissance", "order": 3 },
+    { "image": "assets/history/modern.jpg", "text": "Modern Age", "order": 4 },
+    { "image": "assets/history/contemporary.jpg", "text": "Contemporary Era", "order": 5 }
+]

@@ -1,10 +1,77 @@
-// Sample deck (customize this for different playthroughs)
-const deck = [
-    { image: 'img1.jpg', text: 'Event 1', order: 1 },
-    { image: 'img2.jpg', text: 'Event 2', order: 2 },
-    { image: 'img3.jpg', text: 'Event 3', order: 3 },
-    { image: 'img4.jpg', text: 'Event 4', order: 4 }
-];
+// Global game state
+let deck = [];
+let placed = [];
+let currentCard = null;
+let selectedDeckPath = '';
+
+// DOM elements for start screen
+const startScreen = document.getElementById('start-screen');
+const gameContainer = document.getElementById('game-container');
+const startButton = document.getElementById('start-button');
+const deckOptions = document.querySelectorAll('.deck-option');
+const backButton = document.getElementById('back-button');
+
+// Add event listeners for deck selection
+deckOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        // Remove selected class from all options
+        deckOptions.forEach(opt => opt.classList.remove('selected'));
+        
+        // Add selected class to clicked option
+        option.classList.add('selected');
+        
+        // Store the selected deck path
+        selectedDeckPath = option.dataset.deck;
+        
+        // Enable the start button
+        startButton.disabled = false;
+    });
+});
+
+// Add event listener for start button
+startButton.addEventListener('click', () => {
+    if (selectedDeckPath) {
+        loadDeck(selectedDeckPath);
+    }
+});
+
+// Add event listener for back button
+backButton.addEventListener('click', () => {
+    // Show start screen and hide game container
+    startScreen.style.display = 'flex';
+    gameContainer.style.display = 'none';
+    
+    // Reset game state
+    placed = [];
+    currentCard = null;
+});
+
+// Load deck from the selected JSON file
+function loadDeck(deckPath) {
+    // Show loading feedback (could be enhanced with a loading spinner)
+    showMessage('Loading deck...');
+    
+    fetch(deckPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load deck: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            deck = data;
+            // Hide start screen and show game container
+            startScreen.style.display = 'none';
+            gameContainer.style.display = 'block';
+            // Initialize the game with the loaded deck
+            initialize();
+            showMessage('');
+        })
+        .catch(error => {
+            console.error('Error loading deck data:', error);
+            showMessage('Error loading deck. Please try again.');
+        });
+}
 
 // Shuffle function
 function shuffle(array) {
@@ -13,11 +80,6 @@ function shuffle(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
-
-// Game state
-shuffle(deck);
-let placed = [];
-let currentCard = deck.shift();
 
 // Render placed cards with insertion points
 function renderPlaced() {
@@ -130,10 +192,21 @@ function checkPlacement(i) {
 // Show feedback message
 function showMessage(msg) {
     const messageDiv = document.getElementById('message');
-    messageDiv.textContent = msg;
-    setTimeout(() => { messageDiv.textContent = ''; }, 2000);
+    if (msg === '') {
+        messageDiv.textContent = '';
+    } else {
+        messageDiv.textContent = msg;
+        if (msg !== 'Loading deck...') {
+            setTimeout(() => { messageDiv.textContent = ''; }, 2000);
+        }
+    }
 }
 
 // Initialize game
-renderPlaced();
-renderCurrent();
+function initialize() {
+    shuffle(deck);
+    placed = [];
+    currentCard = deck.shift();
+    renderPlaced();
+    renderCurrent();
+}
