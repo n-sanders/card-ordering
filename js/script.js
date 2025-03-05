@@ -8,67 +8,125 @@ let selectedDeckPath = '';
 const startScreen = document.getElementById('start-screen');
 const gameContainer = document.getElementById('game-container');
 const startButton = document.getElementById('start-button');
-const deckOptions = document.querySelectorAll('.deck-option');
+const deckTitleOptions = document.querySelectorAll('.deck-title-option');
+const deckPreview = document.querySelector('#deck-preview .deck-option');
 const backButton = document.getElementById('back-button');
 
+// Deck data for preview (since JSON isn't loaded yet)
+const deckInfo = {
+    'data/deck.json': {
+        thumbnail: 'assets/basic/img1.jpg',
+        title: 'Basic Events',
+        description: 'A simple sequence of 4 basic events.'
+    },
+    'data/geography-deck.json': {
+        thumbnail: 'assets/geography/mountain.jpg',
+        title: 'Geography',
+        description: 'Learn about the sequence of geological formations.'
+    },
+    'data/history-deck.json': {
+        thumbnail: 'assets/history/ancient.jpg',
+        title: 'History Timeline',
+        description: 'Order events from ancient to contemporary times.'
+    }
+};
+
 // Add event listeners for deck selection
-deckOptions.forEach(option => {
+deckTitleOptions.forEach(option => {
     option.addEventListener('click', () => {
-        // Remove selected class from all options
-        deckOptions.forEach(opt => opt.classList.remove('selected'));
-        
-        // Add selected class to clicked option
+        deckTitleOptions.forEach(opt => opt.classList.remove('selected'));
         option.classList.add('selected');
-        
-        // Store the selected deck path
         selectedDeckPath = option.dataset.deck;
-        
-        // Enable the start button
         startButton.disabled = false;
+
+        // Update preview
+        const info = deckInfo[selectedDeckPath];
+        deckPreview.querySelector('.deck-thumbnail').src = info.thumbnail;
+        deckPreview.querySelector('.deck-title').textContent = info.title;
+        deckPreview.querySelector('.deck-description').textContent = info.description;
+        deckPreview.style.animation = 'none'; // Reset animation
+        setTimeout(() => {
+            deckPreview.style.animation = 'deckAppear 0.3s ease forwards';
+        }, 10);
     });
 });
 
-// Add event listener for start button
+// Set initial preview (optional: select first deck by default)
+const firstDeck = deckTitleOptions[0];
+firstDeck.click(); // Trigger click to show first deck preview
+
+// Start button with bounce
 startButton.addEventListener('click', () => {
     if (selectedDeckPath) {
-        loadDeck(selectedDeckPath);
+        startButton.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            startButton.style.transform = 'scale(1)';
+            loadDeck(selectedDeckPath);
+        }, 100);
     }
 });
 
-// Add event listener for back button
+// Back button (unchanged)
 backButton.addEventListener('click', () => {
-    // Show start screen and hide game container
-    startScreen.style.display = 'flex';
-    gameContainer.style.display = 'none';
-    
-    // Reset game state
-    placed = [];
-    currentCard = null;
+    gameContainer.style.opacity = '0';
+    setTimeout(() => {
+        startScreen.style.display = 'flex';
+        gameContainer.style.display = 'none';
+        startScreen.style.opacity = '0';
+        startScreen.style.animation = 'fadeIn 0.5s ease forwards';
+        placed = [];
+        currentCard = null;
+    }, 300);
 });
 
-// Load deck from the selected JSON file
+// Load deck (unchanged)
 function loadDeck(deckPath) {
-    // Show loading feedback (could be enhanced with a loading spinner)
     showMessage('Loading deck...');
-    
     fetch(deckPath)
         .then(response => {
-            if (!response.ok) {
-                throw new Error(`Failed to load deck: ${response.statusText}`);
-            }
+            if (!response.ok) throw new Error(`Failed to load deck: ${response.statusText}`);
             return response.json();
         })
         .then(data => {
             deck = data;
-            // Hide start screen and show game container
-            startScreen.style.display = 'none';
-            gameContainer.style.display = 'block';
-            // Initialize the game with the loaded deck
-            initialize();
-            showMessage('');
+            startScreen.style.opacity = '0';
+            setTimeout(() => {
+                startScreen.style.display = 'none';
+                gameContainer.style.display = 'block';
+                gameContainer.style.opacity = '1';
+                initialize();
+                showMessage('');
+            }, 300);
         })
         .catch(error => {
-            console.error('Error loading deck data:', error);
+            console.error('Error loading deck:', error);
+            showMessage('Error loading deck. Please try again.');
+        });
+}
+
+// ... (rest of the JS remains unchanged: shuffle, renderPlaced, addInsertionPoint, etc.)
+
+// Load deck with a fade transition
+function loadDeck(deckPath) {
+    showMessage('Loading deck...');
+    fetch(deckPath)
+        .then(response => {
+            if (!response.ok) throw new Error(`Failed to load deck: ${response.statusText}`);
+            return response.json();
+        })
+        .then(data => {
+            deck = data;
+            startScreen.style.opacity = '0';
+            setTimeout(() => {
+                startScreen.style.display = 'none';
+                gameContainer.style.display = 'block';
+                gameContainer.style.opacity = '1';
+                initialize();
+                showMessage('');
+            }, 300);
+        })
+        .catch(error => {
+            console.error('Error loading deck:', error);
             showMessage('Error loading deck. Please try again.');
         });
 }
@@ -81,21 +139,17 @@ function shuffle(array) {
     }
 }
 
-// Render placed cards with insertion points
+// Render placed cards with staggered animation
 function renderPlaced() {
     const placedDiv = document.getElementById('placed-cards');
     placedDiv.innerHTML = '';
-
-    // Add insertion point at start
     addInsertionPoint(placedDiv, 0);
-
     placed.forEach((card, index) => {
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card';
         cardDiv.innerHTML = `<img src="${card.image}" alt="${card.text}"><p>${card.text}</p>`;
+        cardDiv.style.animationDelay = `${index * 0.1}s`; // Staggered entry
         placedDiv.appendChild(cardDiv);
-
-        // Add insertion point after this card
         addInsertionPoint(placedDiv, index + 1);
     });
 }
@@ -122,13 +176,15 @@ function addInsertionPoint(container, index) {
     container.appendChild(insertDiv);
 }
 
-// Render current card to place
+// Render current card with a pop-in effect
 function renderCurrent() {
     const currentDiv = document.getElementById('current-card');
     if (currentCard) {
         currentDiv.innerHTML = `<img src="${currentCard.image}" alt="${currentCard.text}"><p>${currentCard.text}</p>`;
         currentDiv.className = 'card';
         currentDiv.draggable = true;
+        currentDiv.style.transform = 'scale(0.8)';
+        setTimeout(() => { currentDiv.style.transform = 'scale(1)'; }, 50);
         currentDiv.addEventListener('dragstart', (e) => {
             e.dataTransfer.setData('text/plain', 'card');
             currentDiv.classList.add('dragging');
@@ -189,20 +245,22 @@ function checkPlacement(i) {
     }
 }
 
-// Show feedback message
+// Show message with fade effect
 function showMessage(msg) {
     const messageDiv = document.getElementById('message');
     if (msg === '') {
-        messageDiv.textContent = '';
+        messageDiv.style.opacity = '0';
+        setTimeout(() => { messageDiv.textContent = ''; }, 300);
     } else {
         messageDiv.textContent = msg;
+        messageDiv.style.opacity = '1';
         if (msg !== 'Loading deck...') {
-            setTimeout(() => { messageDiv.textContent = ''; }, 2000);
+            setTimeout(() => { messageDiv.style.opacity = '0'; }, 2000);
         }
     }
 }
 
-// Initialize game
+// Initialize with a clean slate
 function initialize() {
     shuffle(deck);
     placed = [];
