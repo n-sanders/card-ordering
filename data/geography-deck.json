@@ -1,6 +1,11 @@
-[
-    { "image": "assets/geography/mountain.jpg", "text": "Mountain Formation", "order": 1 },
-    { "image": "assets/geography/erosion.jpg", "text": "Water Erosion", "order": 2 },
-    { "image": "assets/geography/valley.jpg", "text": "Valley Creation", "order": 3 },
-    { "image": "assets/geography/canyon.jpg", "text": "Canyon Deepening", "order": 4 }
-]
+{
+    "title": "Geography",
+    "thumbnail": "assets/geography/mountain.jpg",
+    "description": "Learn about the sequence of geological formations.",
+    "cards": [
+        { "image": "assets/geography/mountain.jpg", "text": "Mountain Formation", "description": "Mountains form when Earth's tectonic plates collide, pushing land upward over millions of years. This process can create towering peaks like Mount Everest, which continues to grow taller each year as the plates keep pushing against each other.", "order": 1 },
+        { "image": "assets/geography/erosion.jpg", "text": "Water Erosion", "description": "Water erosion happens when rain, rivers, and streams wear away rock and soil. Over time, water carves paths through even the hardest stone, creating new landforms. The Grand Canyon formed this way as the Colorado River cut through rock layers over millions of years.", "order": 2 },
+        { "image": "assets/geography/valley.jpg", "text": "Valley Creation", "description": "Valleys form when water erosion cuts deeper into the ground between hills or mountains. U-shaped valleys were carved by glaciers, while V-shaped valleys were created by rivers. Valleys often have fertile soil from minerals deposited by water, making them good for farming.", "order": 3 },
+        { "image": "assets/geography/canyon.jpg", "text": "Canyon Deepening", "description": "Canyons form when rivers cut deep into rock layers, revealing the Earth's history in their walls. The deeper the canyon, the older the exposed rock at the bottom. Some canyons, like Copper Canyon in Mexico, are so large they have their own unique ecosystems at different depths.", "order": 4 }
+    ]
+}

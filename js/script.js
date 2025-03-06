@@ -13,50 +13,44 @@ const deckPreview = document.querySelector('#deck-preview .deck-option');
 const backButton = document.getElementById('back-button');
 const themeSelect = document.getElementById('theme-select');
 
-// Deck data for preview
-const deckInfo = {
-    'data/deck.json': {
-        thumbnail: 'assets/basic/img1.jpg',
-        title: 'Basic Events',
-        description: 'A simple sequence of 4 basic events.'
-    },
-    'data/geography-deck.json': {
-        thumbnail: 'assets/geography/mountain.jpg',
-        title: 'Geography',
-        description: 'Learn about the sequence of geological formations.'
-    },
-    'data/history-deck.json': {
-        thumbnail: 'assets/history/ancient.jpg',
-        title: 'History Timeline',
-        description: 'Order events from ancient to contemporary times.'
-    }
-};
-
 // Theme switching
 themeSelect.addEventListener('change', (e) => {
     document.body.dataset.theme = e.target.value;
 });
 
-// Add event listeners for deck selection
+// Add event listeners for deck selection - now loading metadata from JSON
 deckTitleOptions.forEach(option => {
     option.addEventListener('click', () => {
         deckTitleOptions.forEach(opt => opt.classList.remove('selected'));
         option.classList.add('selected');
         selectedDeckPath = option.dataset.deck;
-        startButton.disabled = false;
+        startButton.disabled = true; // Disable until metadata is loaded
 
-        const info = deckInfo[selectedDeckPath];
-        deckPreview.querySelector('.deck-thumbnail').src = info.thumbnail;
-        deckPreview.querySelector('.deck-title').textContent = info.title;
-        deckPreview.querySelector('.deck-description').textContent = info.description;
-        deckPreview.style.animation = 'none';
-        setTimeout(() => {
-            deckPreview.style.animation = 'deckAppear 0.3s ease forwards';
-        }, 10);
+        // Load metadata from the selected deck JSON
+        fetch(selectedDeckPath)
+            .then(response => {
+                if (!response.ok) throw new Error(`Failed to load deck info: ${response.statusText}`);
+                return response.json();
+            })
+            .then(data => {
+                // Update the preview with metadata from the JSON
+                deckPreview.querySelector('.deck-thumbnail').src = data.thumbnail;
+                deckPreview.querySelector('.deck-title').textContent = data.title;
+                deckPreview.querySelector('.deck-description').textContent = data.description;
+                deckPreview.style.animation = 'none';
+                setTimeout(() => {
+                    deckPreview.style.animation = 'deckAppear 0.3s ease forwards';
+                }, 10);
+                startButton.disabled = false;
+            })
+            .catch(error => {
+                console.error('Error loading deck info:', error);
+                showMessage('Error loading deck preview. Please try again.');
+            });
     });
 });
 
-// Set initial preview
+// Set initial preview by triggering click on first deck option
 const firstDeck = deckTitleOptions[0];
 firstDeck.click();
 
@@ -84,7 +78,7 @@ backButton.addEventListener('click', () => {
     }, 300);
 });
 
-// Load deck (unchanged)
+// Load deck - updated to handle new JSON structure
 function loadDeck(deckPath) {
     showMessage('Loading deck...');
     fetch(deckPath)
@@ -93,32 +87,8 @@ function loadDeck(deckPath) {
             return response.json();
         })
         .then(data => {
-            deck = data;
-            startScreen.style.opacity = '0';
-            setTimeout(() => {
-                startScreen.style.display = 'none';
-                gameContainer.style.display = 'block';
-                gameContainer.style.opacity = '1';
-                initialize();
-                showMessage('');
-            }, 300);
-        })
-        .catch(error => {
-            console.error('Error loading deck:', error);
-            showMessage('Error loading deck. Please try again.');
-        });
-}
-
-// Load deck with a fade transition
-function loadDeck(deckPath) {
-    showMessage('Loading deck...');
-    fetch(deckPath)
-        .then(response => {
-            if (!response.ok) throw new Error(`Failed to load deck: ${response.statusText}`);
-            return response.json();
-        })
-        .then(data => {
-            deck = data;
+            // Extract cards array from the JSON structure
+            deck = data.cards;
             startScreen.style.opacity = '0';
             setTimeout(() => {
                 startScreen.style.display = 'none';
