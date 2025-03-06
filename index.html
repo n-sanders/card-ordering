@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-theme="green">
     <h1>Card Sorting Game</h1>
     
     <!-- Start Screen -->
@@ -40,6 +40,17 @@
         <div id="message"></div>
         <button id="back-button">← Back to Deck Selection</button>
     </div>
+    
+    <!-- Footer with Theme Selector -->
+    <footer id="theme-selector">
+        <label for="theme-select">Theme:</label>
+        <select id="theme-select">
+            <option value="green">Green (Default)</option>
+            <option value="dark">Dark</option>
+            <option value="bubblegum">Bubblegum</option>
+            <option value="vader">Vader</option>
+        </select>
+    </footer>
     
     <script src="js/script.js"></script>
 </body>

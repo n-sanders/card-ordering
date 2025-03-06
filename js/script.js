@@ -4,15 +4,16 @@ let placed = [];
 let currentCard = null;
 let selectedDeckPath = '';
 
-// DOM elements for start screen
+// DOM elements
 const startScreen = document.getElementById('start-screen');
 const gameContainer = document.getElementById('game-container');
 const startButton = document.getElementById('start-button');
 const deckTitleOptions = document.querySelectorAll('.deck-title-option');
 const deckPreview = document.querySelector('#deck-preview .deck-option');
 const backButton = document.getElementById('back-button');
+const themeSelect = document.getElementById('theme-select');
 
-// Deck data for preview (since JSON isn't loaded yet)
+// Deck data for preview
 const deckInfo = {
     'data/deck.json': {
         thumbnail: 'assets/basic/img1.jpg',
@@ -31,6 +32,11 @@ const deckInfo = {
     }
 };
 
+// Theme switching
+themeSelect.addEventListener('change', (e) => {
+    document.body.dataset.theme = e.target.value;
+});
+
 // Add event listeners for deck selection
 deckTitleOptions.forEach(option => {
     option.addEventListener('click', () => {
@@ -39,23 +45,22 @@ deckTitleOptions.forEach(option => {
         selectedDeckPath = option.dataset.deck;
         startButton.disabled = false;
 
-        // Update preview
         const info = deckInfo[selectedDeckPath];
         deckPreview.querySelector('.deck-thumbnail').src = info.thumbnail;
         deckPreview.querySelector('.deck-title').textContent = info.title;
         deckPreview.querySelector('.deck-description').textContent = info.description;
-        deckPreview.style.animation = 'none'; // Reset animation
+        deckPreview.style.animation = 'none';
         setTimeout(() => {
             deckPreview.style.animation = 'deckAppear 0.3s ease forwards';
         }, 10);
     });
 });
 
-// Set initial preview (optional: select first deck by default)
+// Set initial preview
 const firstDeck = deckTitleOptions[0];
-firstDeck.click(); // Trigger click to show first deck preview
+firstDeck.click();
 
-// Start button with bounce
+// Start button
 startButton.addEventListener('click', () => {
     if (selectedDeckPath) {
         startButton.style.transform = 'scale(0.95)';
@@ -66,7 +71,7 @@ startButton.addEventListener('click', () => {
     }
 });
 
-// Back button (unchanged)
+// Back button
 backButton.addEventListener('click', () => {
     gameContainer.style.opacity = '0';
     setTimeout(() => {

@@ -1,16 +1,72 @@
+/* Base styles with variables */
+:root {
+    --primary: #4CAF50; /* Green default */
+    --primary-hover: #45a049;
+    --background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    --card-bg: #fff;
+    --text: #333;
+    --text-light: #777;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --highlight: rgba(76, 175, 80, 0.5);
+    --message: #e74c3c;
+    --deck-border: #ddd;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --primary: #00bcd4; /* Teal accent */
+    --primary-hover: #00acc1;
+    --background: linear-gradient(135deg, #1f2a44, #374057);
+    --card-bg: #2a3248;
+    --text: #e0e0e0;
+    --text-light: #a0a0a0;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --highlight: rgba(0, 188, 212, 0.5);
+    --message: #ff6b6b;
+    --deck-border: #444;
+}
+
+/* Bubblegum theme */
+[data-theme="bubblegum"] {
+    --primary: #ff69b4; /* Hot pink */
+    --primary-hover: #ff1493;
+    --background: linear-gradient(135deg, #ffe6f0, #e6ccff);
+    --card-bg: #fff0f5;
+    --text: #4b0082; /* Indigo */
+    --text-light: #7a5299;
+    --shadow: rgba(75, 0, 130, 0.1);
+    --highlight: rgba(255, 105, 180, 0.5);
+    --message: #ff4500;
+    --deck-border: #ffb6c1;
+}
+
+/* Vader theme */
+[data-theme="vader"] {
+    --primary: #d40035; /* Red accent */
+    --primary-hover: #c10000;
+    --background: linear-gradient(135deg, #1f2a44, #374057);
+    --card-bg: #2a3248;
+    --text: #e0e0e0;
+    --text-light: #a0a0a0;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --highlight: rgba(212, 0, 0, 0.5);
+    --message: #ff6b6b;
+    --deck-border: #444;
+}
+
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 20px;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    background: var(--background);
     min-height: 100vh;
 }
 
 h1 {
     font-size: 2.5em;
-    color: #333;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    color: var(--text);
+    text-shadow: 1px 1px 2px var(--shadow);
 }
 
 #start-screen {
@@ -46,26 +102,26 @@ h1 {
 
 .deck-title-option {
     padding: 15px 20px;
-    background: #fff;
+    background: var(--card-bg);
     border-radius: 8px;
     cursor: pointer;
     text-align: left;
     font-size: 1.1em;
-    color: #333;
+    color: var(--text);
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px var(--shadow);
 }
 
 .deck-title-option:hover {
-    background: #f0f0f0;
-    transform: translateX(5px); /* Slight shift on hover */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: var(--deck-border);
+    transform: translateX(5px);
+    box-shadow: 0 4px 10px var(--shadow);
 }
 
 .deck-title-option.selected {
-    background: #4CAF50;
-    color: white;
-    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 4px 12px var(--highlight);
 }
 
 #deck-preview {
@@ -79,19 +135,19 @@ h1 {
 .deck-option {
     width: 300px;
     height: 320px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--deck-border);
     border-radius: 12px;
     padding: 20px;
-    background: #fff;
+    background: var(--card-bg);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 10px var(--shadow);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     opacity: 0;
     transform: scale(0.9);
-    animation: deckAppear 0.3s ease forwards; /* Fade and grow in */
+    animation: deckAppear 0.3s ease forwards;
 }
 
 @keyframes deckAppear {
@@ -100,8 +156,8 @@ h1 {
 
 .deck-option:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    border-color: #4CAF50;
+    box-shadow: 0 8px 20px var(--shadow);
+    border-color: var(--primary);
 }
 
 .deck-thumbnail {
@@ -120,32 +176,31 @@ h1 {
 .deck-title {
     font-weight: 600;
     font-size: 1.4em;
-    color: #333;
+    color: var(--text);
     margin-bottom: 10px;
 }
 
 .deck-description {
     font-size: 1em;
-    color: #777;
+    color: var(--text-light);
 }
 
-/* Buttons (unchanged) */
 #start-button, #back-button {
-    background: #4CAF50;
-    color: white;
+    background: var(--primary);
+    color: #fff;
     border: none;
     padding: 12px 35px;
     font-size: 1.1em;
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+    box-shadow: 0 3px 10px var(--highlight);
 }
 
 #start-button:hover, #back-button:hover {
-    background: #45a049;
+    background: var(--primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+    box-shadow: 0 5px 15px var(--highlight);
 }
 
 #start-button:disabled {
@@ -154,16 +209,6 @@ h1 {
     box-shadow: none;
 }
 
-/* Game Container (unchanged from previous) */
-#game-container {
-    display: none;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* ... (rest of the CSS remains the same: #game-instructions, #placed-cards, .insertion-point, .card, etc.) */
-/* Game Container */
 #game-container {
     display: none;
     max-width: 1000px;
@@ -173,7 +218,7 @@ h1 {
 
 #game-instructions {
     font-size: 1.1em;
-    color: #555;
+    color: var(--text-light);
     margin-bottom: 20px;
     opacity: 0;
     animation: slideUp 0.5s ease 0.2s forwards;
@@ -209,9 +254,9 @@ h1 {
 }
 
 .insertion-point.drag-over {
-    background: #4CAF50;
-    transform: scale(1.2); /* Grow when dragged over */
-    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    background: var(--primary);
+    transform: scale(1.2);
+    box-shadow: 0 0 10px var(--highlight);
 }
 
 .card {
@@ -223,13 +268,13 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background: #fff;
+    background: var(--card-bg);
     cursor: move;
     user-select: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--shadow);
     transition: all 0.3s ease;
     opacity: 0;
-    animation: cardAppear 0.3s ease forwards; /* Cards slide in */
+    animation: cardAppear 0.3s ease forwards;
 }
 
 @keyframes cardAppear {
@@ -240,7 +285,7 @@ h1 {
 .card.dragging {
     opacity: 0.7;
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px var(--shadow);
 }
 
 .card img {
@@ -254,7 +299,7 @@ h1 {
 .card p {
     margin: 10px;
     font-size: 0.95em;
-    color: #333;
+    color: var(--text);
     font-weight: 500;
 }
 
@@ -268,6 +313,36 @@ h1 {
     margin-top: 15px;
     font-size: 1.2em;
     font-weight: bold;
-    color: #e74c3c; /* Red for errors */
+    color: var(--message);
     transition: opacity 0.3s ease;
+}
+
+/* Footer */
+#theme-selector {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--card-bg);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#theme-selector label {
+    font-size: 1em;
+    color: var(--text);
+}
+
+#theme-select {
+    padding: 5px 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid var(--deck-border);
+    background: var(--card-bg);
+    color: var(--text);
+    cursor: pointer;
 }

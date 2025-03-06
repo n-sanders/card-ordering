@@ -1,7 +1,12 @@
 [
-    { "image": "assets/history/ancient.jpg", "text": "Ancient Era", "order": 1 },
-    { "image": "assets/history/medieval.jpg", "text": "Medieval Period", "order": 2 },
-    { "image": "assets/history/renaissance.jpg", "text": "Renaissance", "order": 3 },
-    { "image": "assets/history/modern.jpg", "text": "Modern Age", "order": 4 },
-    { "image": "assets/history/contemporary.jpg", "text": "Contemporary Era", "order": 5 }
+    { "image": "assets/history/stoneweapon.jpg", "text": "Stone Age", "order": 1 },
+    { "image": "assets/history/pottery.jpg", "text": "Bronze Age", "order": 2 },
+    { "image": "assets/history/blacksmith.jpg", "text": "Iron Age", "order": 3 },
+    { "image": "assets/history/rome.jpg", "text": "Classical Era", "order": 4 },
+    { "image": "assets/history/castle.jpg", "text": "Medieval Era", "order": 5 },
+    { "image": "assets/history/cathedral.jpg", "text": "Renaissance", "order": 6 },
+    { "image": "assets/history/voyage.jpg", "text": "Age of Exploration", "order": 7 },
+    { "image": "assets/history/steamengine.jpg", "text": "Industrial Revolution", "order": 8 },
+    { "image": "assets/history/biplane.jpg", "text": "Modern Era", "order": 9 },
+    { "image": "assets/history/computer.jpg", "text": "Information Age", "order": 10 }
 ]
