@@ -211,11 +211,12 @@ h1 {
 
 #game-container {
     display: none;
-    max-width: 1000px;
+    max-width: 1200px; /* Increased max-width to accommodate two columns */
     margin: 0 auto;
     padding: 20px;
 }
 
+/* Instructions */
 #game-instructions {
     font-size: 1.1em;
     color: var(--text-light);
@@ -224,27 +225,50 @@ h1 {
     animation: slideUp 0.5s ease 0.2s forwards;
 }
 
+/* Two-Column Layout */
+#game-columns {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 30px 0;
+}
+
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+#placed-column {
+    flex: 1;
+    max-width: 400px; /* Fixed width for the stack */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#placed-column h2 {
+    font-size: 1.5em;
+    color: var(--text);
+    margin-bottom: 15px;
+}
+
+#placed-stack-container {
+    width: 100%;
+}
+
 #placed-cards {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 180px;
-    margin: 30px 0;
-    flex-wrap: wrap;
     gap: 10px;
+    min-height: 200px;
 }
 
 .insertion-point {
-    width: 25px;
-    height: 120px;
+    width: 100%;
+    height: 25px;
     background: rgba(200, 200, 200, 0.5);
     border-radius: 4px;
-    margin: 0 8px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -255,26 +279,42 @@ h1 {
 
 .insertion-point.drag-over {
     background: var(--primary);
-    transform: scale(1.2);
+    transform: scale(1.1);
     box-shadow: 0 0 10px var(--highlight);
 }
 
 .card {
-    width: 120px;
-    height: 180px;
+    width: 400px;
+    height: 100px;
     border: none;
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     background: var(--card-bg);
-    cursor: move;
+    cursor: default;
     user-select: none;
     box-shadow: 0 4px 12px var(--shadow);
     transition: all 0.3s ease;
     opacity: 0;
     animation: cardAppear 0.3s ease forwards;
+}
+
+.card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 10px;
+}
+
+.card p {
+    flex: 1;
+    margin: 0 10px;
+    font-size: 1em;
+    color: var(--text);
+    font-weight: 500;
+    text-align: left;
 }
 
 @keyframes cardAppear {
@@ -288,29 +328,65 @@ h1 {
     box-shadow: 0 8px 20px var(--shadow);
 }
 
-.card img {
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-top: 10px;
+#current-column {
+    flex: 1;
+    max-width: 300px; /* Matches current card width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.card p {
-    margin: 10px;
-    font-size: 0.95em;
+#current-column h2 {
+    font-size: 1.5em;
     color: var(--text);
-    font-weight: 500;
+    margin-bottom: 15px;
 }
 
 #current-card-container {
-    margin: 30px 0;
     display: flex;
     justify-content: center;
 }
 
+/* Current Card (Larger Portrait) */
+#current-card {
+    width: 300px;
+    height: 450px;
+    border: none;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card-bg);
+    cursor: move;
+    user-select: none;
+    box-shadow: 0 6px 15px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+#current-card.dragging {
+    opacity: 0.7;
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px var(--shadow);
+}
+
+#current-card img {
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#current-card p {
+    margin: 20px;
+    font-size: 1.2em;
+    color: var(--text);
+    font-weight: 500;
+}
+
 #message {
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 1.2em;
     font-weight: bold;
     color: var(--message);

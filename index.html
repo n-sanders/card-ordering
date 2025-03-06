@@ -30,12 +30,21 @@
         <button id="start-button" disabled>Start Game</button>
     </div>
     
-    <!-- Game Container (unchanged) -->
     <div id="game-container">
-        <p id="game-instructions">Instructions: Drag the card below and drop it, or click an insertion point, to place it in the correct position (ascending order).</p>
-        <div id="placed-cards"></div>
-        <div id="current-card-container">
-            <div id="current-card" draggable="true"></div>
+        <p id="game-instructions">Instructions: Drag the card from the right and drop it, or click an insertion point on the left, to place it in the correct position (ascending order).</p>
+        <div id="game-columns">
+            <div id="placed-column">
+                <h2>Timeline</h2>
+                <div id="placed-stack-container">
+                    <div id="placed-cards"></div>
+                </div>
+            </div>
+            <div id="current-column">
+                <h2>Current Event</h2>
+                <div id="current-card-container">
+                    <div id="current-card" draggable="true"></div>
+                </div>
+            </div>
         </div>
         <div id="message"></div>
         <button id="back-button">← Back to Deck Selection</button>

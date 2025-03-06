@@ -109,8 +109,6 @@ function loadDeck(deckPath) {
         });
 }
 
-// ... (rest of the JS remains unchanged: shuffle, renderPlaced, addInsertionPoint, etc.)
-
 // Load deck with a fade transition
 function loadDeck(deckPath) {
     showMessage('Loading deck...');
@@ -186,7 +184,6 @@ function renderCurrent() {
     const currentDiv = document.getElementById('current-card');
     if (currentCard) {
         currentDiv.innerHTML = `<img src="${currentCard.image}" alt="${currentCard.text}"><p>${currentCard.text}</p>`;
-        currentDiv.className = 'card';
         currentDiv.draggable = true;
         currentDiv.style.transform = 'scale(0.8)';
         setTimeout(() => { currentDiv.style.transform = 'scale(1)'; }, 50);
@@ -199,7 +196,6 @@ function renderCurrent() {
         });
     } else {
         currentDiv.innerHTML = '';
-        currentDiv.className = '';
     }
 }
 
