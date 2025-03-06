@@ -141,21 +141,11 @@ function renderPlaced() {
     });
 }
 
-// Add an insertion point with drag-and-drop and click event listeners
+// Add an insertion point with click event listener
 function addInsertionPoint(container, index) {
     const insertDiv = document.createElement('div');
     insertDiv.className = 'insertion-point';
     insertDiv.dataset.index = index;
-
-    // Drag-and-drop events
-    insertDiv.addEventListener('dragover', (e) => e.preventDefault());
-    insertDiv.addEventListener('dragenter', (e) => {
-        e.target.classList.add('drag-over');
-    });
-    insertDiv.addEventListener('dragleave', (e) => {
-        e.target.classList.remove('drag-over');
-    });
-    insertDiv.addEventListener('drop', handleDrop);
 
     // Click event
     insertDiv.addEventListener('click', handleClick);
@@ -168,52 +158,45 @@ function renderCurrent() {
     const currentDiv = document.getElementById('current-card');
     if (currentCard) {
         currentDiv.innerHTML = `<p>${currentCard.text}</p><img src="${currentCard.image}" alt="${currentCard.text}"><p>${currentCard.description}</p>`;
-        currentDiv.draggable = true;
         currentDiv.style.transform = 'scale(0.8)';
         setTimeout(() => { currentDiv.style.transform = 'scale(1)'; }, 50);
-        currentDiv.addEventListener('dragstart', (e) => {
-            e.dataTransfer.setData('text/plain', 'card');
-            currentDiv.classList.add('dragging');
-        });
-        currentDiv.addEventListener('dragend', () => {
-            currentDiv.classList.remove('dragging');
-        });
     } else {
         currentDiv.innerHTML = '';
-    }
-}
-
-// Handle drop event
-function handleDrop(e) {
-    e.preventDefault();
-    e.target.classList.remove('drag-over');
-    if (e.dataTransfer.getData('text/plain') === 'card') {
-        const index = parseInt(e.target.dataset.index);
-        tryPlacement(index);
     }
 }
 
 // Handle click event
 function handleClick(e) {
     const index = parseInt(e.target.dataset.index);
-    tryPlacement(index);
+    const insertionPoint = e.target;
+    
+    if (checkPlacement(index)) {
+        tryPlacement(index);
+    } else {
+        // Add wiggle animation class
+        insertionPoint.classList.add('incorrect');
+        
+        // Remove class after animation completes
+        setTimeout(() => {
+            insertionPoint.classList.remove('incorrect');
+        }, 500); // matches animation duration
+        
+        showMessage('Incorrect, try again.');
+    }
 }
 
 // Attempt to place the card at the given index
 function tryPlacement(index) {
-    if (checkPlacement(index)) {
-        placed.splice(index, 0, currentCard);
-        renderPlaced();
-        if (deck.length > 0) {
-            currentCard = deck.shift();
-            renderCurrent();
-        } else {
-            currentCard = null;
-            renderCurrent();
-            showMessage('Congratulations, you have sorted all cards correctly!');
-        }
+    placed.splice(index, 0, currentCard);
+    renderPlaced();
+    
+    if (deck.length > 0) {
+        currentCard = deck.shift();
+        renderCurrent();
     } else {
-        showMessage('Incorrect, try again.');
+        currentCard = null;
+        renderCurrent();
+        showMessage('Congratulations, you have sorted all cards correctly!');
     }
 }
 
