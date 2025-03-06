@@ -162,7 +162,7 @@ h1 {
 
 .deck-thumbnail {
     width: 200px;
-    height: 160px;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -404,11 +404,21 @@ h1 {
 }
 
 #message {
-    margin-top: 20px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 10px 20px;
     font-size: 1.2em;
     font-weight: bold;
     color: var(--message);
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--shadow);
     transition: opacity 0.3s ease;
+    z-index: 100;
+    opacity: 0;
 }
 
 /* Header */

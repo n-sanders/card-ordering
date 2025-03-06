@@ -6,6 +6,7 @@ let selectedDeckPath = '';
 
 // DOM elements
 const startScreen = document.getElementById('start-screen');
+const header = document.getElementById('header');
 const gameContainer = document.getElementById('game-container');
 const startButton = document.getElementById('start-button');
 const deckTitleOptions = document.querySelectorAll('.deck-title-option');
@@ -70,9 +71,12 @@ backButton.addEventListener('click', () => {
     gameContainer.style.opacity = '0';
     setTimeout(() => {
         startScreen.style.display = 'flex';
+        header.style.display = 'flex';
         gameContainer.style.display = 'none';
         startScreen.style.opacity = '0';
         startScreen.style.animation = 'fadeIn 0.5s ease forwards';
+        header.style.opacity = '0';
+        header.style.animation = 'fadeIn 0.5s ease forwards';
         placed = [];
         currentCard = null;
     }, 300);
@@ -87,13 +91,23 @@ function loadDeck(deckPath) {
             return response.json();
         })
         .then(data => {
-            // Extract cards array from the JSON structure
             deck = data.cards;
+            startScreen.style.transition = 'opacity 0.3s ease';
+            header.style.transition = 'opacity 0.3s ease';
+            gameContainer.style.transition = 'opacity 0.3s ease';            
             startScreen.style.opacity = '0';
+            header.style.opacity = '0';
+            
             setTimeout(() => {
                 startScreen.style.display = 'none';
+                header.style.display = 'none';
+                
                 gameContainer.style.display = 'block';
-                gameContainer.style.opacity = '1';
+                gameContainer.style.opacity = '0';
+                setTimeout(() => {
+                    gameContainer.style.opacity = '1';
+                }, 10);
+                
                 initialize();
                 showMessage('');
             }, 300);
