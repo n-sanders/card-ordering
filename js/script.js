@@ -183,7 +183,7 @@ function addInsertionPoint(container, index) {
 function renderCurrent() {
     const currentDiv = document.getElementById('current-card');
     if (currentCard) {
-        currentDiv.innerHTML = `<img src="${currentCard.image}" alt="${currentCard.text}"><p>${currentCard.text}</p>`;
+        currentDiv.innerHTML = `<p>${currentCard.text}</p><img src="${currentCard.image}" alt="${currentCard.text}"><p>${currentCard.description}</p>`;
         currentDiv.draggable = true;
         currentDiv.style.transform = 'scale(0.8)';
         setTimeout(() => { currentDiv.style.transform = 'scale(1)'; }, 50);
