@@ -507,20 +507,19 @@ h1 {
 
 .particle {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    top: 0;
     border-radius: 50%;
-    pointer-events: none;
-    animation: particleFall 3s ease-in forwards;
+    z-index: 10;
+    animation: fall linear forwards;
 }
 
-@keyframes particleFall {
+@keyframes fall {
     0% {
-        transform: translateY(-5vh) rotate(0deg);
+        transform: translateY(0);
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh) rotate(720deg);
+        transform: translateY(100vh);
         opacity: 0;
     }
 }

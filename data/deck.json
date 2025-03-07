@@ -1,11 +1,11 @@
 {
     "title": "Basic Events",
-    "thumbnail": "assets/basic/img1.jpg",
+    "thumbnail": "assets/basic/Quad.jpg",
     "description": "A simple sequence of 4 basic events.",
     "cards": [
-        { "image": "assets/basic/img1.jpg", "text": "Event 1", "description": "This is the first event in our sequence. It happens before all the others and sets the stage for what follows. Notice how this event's details help establish the timeline's beginning.", "order": 1 },
-        { "image": "assets/basic/img2.jpg", "text": "Event 2", "description": "Following Event 1, this second occurrence builds upon what happened before. It represents the next logical step in our timeline and shows progression from the initial event.", "order": 2 },
-        { "image": "assets/basic/img3.jpg", "text": "Event 3", "description": "As our timeline continues, Event 3 marks an important middle point. By now, you can see a pattern developing as each event follows a chronological order based on when they occurred.", "order": 3 },
-        { "image": "assets/basic/img4.jpg", "text": "Event 4", "description": "The final event in our basic sequence completes the timeline. This conclusion shows the end result of the progression that started with Event 1 and developed through Events 2 and 3.", "order": 4 }
+        { "image": "assets/basic/Number_1.jpg", "text": "Event 1", "description": "This is the first event in our sequence. It happens before all the others and sets the stage for what follows. Notice how this event's details help establish the timeline's beginning.", "order": 1 },
+        { "image": "assets/basic/Number_2.jpg", "text": "Event 2", "description": "Following Event 1, this second occurrence builds upon what happened before. It represents the next logical step in our timeline and shows progression from the initial event.", "order": 2 },
+        { "image": "assets/basic/Number_3.jpg", "text": "Event 3", "description": "As our timeline continues, Event 3 marks an important middle point. By now, you can see a pattern developing as each event follows a chronological order based on when they occurred.", "order": 3 },
+        { "image": "assets/basic/Number_4.jpg", "text": "Event 4", "description": "The final event in our basic sequence completes the timeline. This conclusion shows the end result of the progression that started with Event 1 and developed through Events 2 and 3.", "order": 4 }
     ]
 }

@@ -246,14 +246,10 @@ function showCelebration() {
     document.getElementById('replay-button').addEventListener('click', () => {
         backButton.click();
     });
-    
-    // Show a congratulatory message
-    showMessage('Congratulations, you have sorted all cards correctly!');
 }
 
 // Create particle effects
 function createParticles() {
-    const container = document.getElementById('celebration-container');
     const colors = ['#FFD700', '#FF6347', '#7FFF00', '#1E90FF', '#FF1493', '#00FFFF'];
     
     // Create new particles every 200ms
@@ -275,12 +271,12 @@ function createParticles() {
             // Random animation duration
             particle.style.animationDuration = `${Math.random() * 2 + 2}s`;
             
-            container.appendChild(particle);
+            gameContainer.appendChild(particle);
             
             // Remove particle after animation ends
             setTimeout(() => {
-                if (particle.parentNode === container) {
-                    container.removeChild(particle);
+                if (particle.parentNode === gameContainer) {
+                    gameContainer.removeChild(particle);
                 }
             }, 3000);
         }
