@@ -70,6 +70,7 @@ startButton.addEventListener('click', () => {
 backButton.addEventListener('click', () => {
     gameContainer.style.opacity = '0';
     setTimeout(() => {
+        // Reset game state
         startScreen.style.display = 'flex';
         header.style.display = 'flex';
         gameContainer.style.display = 'none';
@@ -79,6 +80,16 @@ backButton.addEventListener('click', () => {
         header.style.animation = 'fadeIn 0.5s ease forwards';
         placed = [];
         currentCard = null;
+        
+        // Reset UI elements
+        document.getElementById('current-card').style.display = 'block';
+        document.getElementById('celebration-container').style.display = 'none';
+        
+        // Reset any insertion points that might be hidden
+        const insertionPoints = document.querySelectorAll('.insertion-point');
+        insertionPoints.forEach(point => {
+            point.style.opacity = '1';
+        });
     }, 300);
 });
 
@@ -99,6 +110,16 @@ function loadDeck(deckPath) {
             header.style.opacity = '0';
             
             setTimeout(() => {
+                // Clean up previous game state
+                document.getElementById('current-card').style.display = 'block';
+                document.getElementById('celebration-container').style.display = 'none';
+                
+                // Reset any insertion points that might be hidden
+                const insertionPoints = document.querySelectorAll('.insertion-point');
+                insertionPoints.forEach(point => {
+                    point.style.opacity = '1';
+                });
+                
                 startScreen.style.display = 'none';
                 header.style.display = 'none';
                 
@@ -195,9 +216,80 @@ function tryPlacement(index) {
         renderCurrent();
     } else {
         currentCard = null;
-        renderCurrent();
-        showMessage('Congratulations, you have sorted all cards correctly!');
+        showCelebration();
     }
+}
+
+// Show celebration when game is completed
+function showCelebration() {
+    // Hide current card and fade out insertion points
+    document.getElementById('current-card').style.display = 'none';
+    
+    const insertionPoints = document.querySelectorAll('.insertion-point');
+    insertionPoints.forEach(point => {
+        point.style.transition = 'opacity 0.5s ease';
+        point.style.opacity = '0';
+    });
+    
+    // Show celebration container
+    const celebrationContainer = document.getElementById('celebration-container');
+    celebrationContainer.style.display = 'flex';
+    
+    // Add message text based on deck info
+    const congratsMessage = document.getElementById('congrats-message');
+    congratsMessage.innerHTML = 'Congratulations!<br>You completed the timeline!';
+    
+    // Create particles
+    createParticles();
+    
+    // Add event listener to replay button
+    document.getElementById('replay-button').addEventListener('click', () => {
+        backButton.click();
+    });
+    
+    // Show a congratulatory message
+    showMessage('Congratulations, you have sorted all cards correctly!');
+}
+
+// Create particle effects
+function createParticles() {
+    const container = document.getElementById('celebration-container');
+    const colors = ['#FFD700', '#FF6347', '#7FFF00', '#1E90FF', '#FF1493', '#00FFFF'];
+    
+    // Create new particles every 200ms
+    const particleInterval = setInterval(() => {
+        // Create 5 particles at a time
+        for (let i = 0; i < 5; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random position, size and color
+            const size = Math.random() * 15 + 5;
+            const xPos = Math.random() * 100;
+            
+            particle.style.left = `${xPos}%`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Random animation duration
+            particle.style.animationDuration = `${Math.random() * 2 + 2}s`;
+            
+            container.appendChild(particle);
+            
+            // Remove particle after animation ends
+            setTimeout(() => {
+                if (particle.parentNode === container) {
+                    container.removeChild(particle);
+                }
+            }, 3000);
+        }
+    }, 200);
+    
+    // Stop creating particles after 5 seconds
+    setTimeout(() => {
+        clearInterval(particleInterval);
+    }, 5000);
 }
 
 // Check if placement is correct

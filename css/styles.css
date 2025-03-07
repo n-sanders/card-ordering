@@ -415,7 +415,7 @@ h1 {
 
 #message {
     position: fixed;
-    top: 20px;
+    top: 20%;
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
@@ -466,3 +466,69 @@ h1 {
     color: var(--text);
     cursor: pointer;
 }
+
+/* Congratulations message and effects */
+#celebration-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#congrats-message {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 20px;
+    animation: bounceIn 1s ease;
+}
+
+#replay-button {
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeIn 1.5s ease;
+}
+
+#replay-button:hover {
+    background-color: var(--highlight);
+    transform: scale(1.05);
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: particleFall 3s ease-in forwards;
+}
+
+@keyframes particleFall {
+    0% {
+        transform: translateY(-5vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.1); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Media queries */
