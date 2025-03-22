@@ -13,6 +13,7 @@ const deckTitleOptions = document.querySelectorAll('.deck-title-option');
 const deckPreview = document.querySelector('#deck-preview .deck-option');
 const backButton = document.getElementById('back-button');
 const themeSelect = document.getElementById('theme-select');
+const deckOption = document.querySelector('.deck-option');
 
 // Theme switching
 themeSelect.addEventListener('change', (e) => {
@@ -55,14 +56,26 @@ deckTitleOptions.forEach(option => {
 const firstDeck = deckTitleOptions[0];
 firstDeck.click();
 
-// Start button
+// Define the reusable handler
+function startGame(element, deckPath) {
+    element.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+        element.style.transform = 'scale(1)';
+        loadDeck(deckPath);
+    }, 100);
+}
+
+// Use it for start button
 startButton.addEventListener('click', () => {
     if (selectedDeckPath) {
-        startButton.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            startButton.style.transform = 'scale(1)';
-            loadDeck(selectedDeckPath);
-        }, 100);
+        startGame(startButton, selectedDeckPath);
+    }
+});
+
+// Use it for deck option
+deckOption.addEventListener('click', () => {
+    if (selectedDeckPath) {
+        startGame(deckOption, selectedDeckPath);
     }
 });
 
@@ -155,8 +168,12 @@ function renderPlaced() {
     placed.forEach((card, index) => {
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card';
-        cardDiv.innerHTML = `<img src="${card.image}" alt="${card.text}"><p>${card.text}</p>`;
-        cardDiv.style.animationDelay = `${index * 0.1}s`; // Staggered entry
+        cardDiv.innerHTML = `
+            <img src="${card.image}" alt="${card.text}">
+            <p>${card.text}</p>
+            <span class="date">${card.date}</span>
+        `;
+        cardDiv.style.animationDelay = `${index * 0.1}s`;
         placedDiv.appendChild(cardDiv);
         addInsertionPoint(placedDiv, index + 1);
     });

@@ -160,6 +160,7 @@ h1 {
     opacity: 0;
     transform: scale(0.9);
     animation: deckAppear 0.3s ease forwards;
+    cursor: pointer;
 }
 
 @keyframes deckAppear {
@@ -322,6 +323,13 @@ h1 {
     animation: cardAppear 0.3s ease forwards;
 }
 
+.card .date {
+    margin-right: 10px;
+    font-size: 0.9em;
+    color: var(--text);
+    white-space: nowrap;
+}
+
 .card img {
     width: 80px;
     height: 80px;
@@ -380,7 +388,6 @@ h1 {
     align-items: center;
     justify-content: flex-start;
     background: var(--card-bg);
-    cursor: move;
     user-select: none;
     box-shadow: 0 6px 15px var(--shadow);
     transition: all 0.3s ease;

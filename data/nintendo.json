@@ -1,0 +1,119 @@
+{
+    "title": "Nintendo Gaming Systems Timeline",
+    "thumbnail": "assets/nintendo/nintendo_logo.jpg",
+    "description": "Order Nintendo gaming systems from their earliest to most recent releases.",
+    "cards": [
+        {
+            "image": "assets/nintendo/color_tv_game.jpg",
+            "text": "Color TV-Game",
+            "description": "The Color TV-Game series was Nintendo’s first venture into home gaming consoles, released only in Japan. It featured simple games like Pong variants and racing, marking Nintendo’s entry into the video game market.",
+            "order": 1,
+            "date": "1977"
+        },
+        {
+            "image": "assets/nintendo/game_and_watch.jpg",
+            "text": "Game & Watch",
+            "description": "The Game & Watch series introduced handheld gaming with single-game devices. It pioneered features like the D-Pad and sold over 40 million units, setting the stage for Nintendo’s portable gaming legacy.",
+            "order": 2,
+            "date": "1980"
+        },
+        {
+            "image": "assets/nintendo/nes.jpg",
+            "text": "Nintendo Entertainment System (NES)",
+            "description": "Known as the Famicom in Japan, the NES was Nintendo’s first home console to gain global success. It revitalized the video game industry after the 1983 crash with iconic games like Super Mario Bros.",
+            "order": 3,
+            "date": "1983"
+        },
+        {
+            "image": "assets/nintendo/game_boy.jpg",
+            "text": "Game Boy",
+            "description": "The Game Boy revolutionized handheld gaming with its interchangeable cartridges. Despite its monochrome screen, it dominated the market with hits like Tetris and Pokémon, selling over 118 million units.",
+            "order": 4,
+            "date": "1989"
+        },
+        {
+            "image": "assets/nintendo/snes.png",
+            "text": "Super Nintendo Entertainment System (SNES)",
+            "description": "The SNES brought 16-bit gaming to homes, competing with Sega’s Genesis. It featured advanced graphics and sound, with classics like Super Mario World, selling nearly 50 million units worldwide.",
+            "order": 5,
+            "date": "1990"
+        },
+        {
+            "image": "assets/nintendo/virtual_boy.jpg",
+            "text": "Virtual Boy",
+            "description": "The Virtual Boy was an experimental portable console with 3D visuals, using a head-mounted display. It was a commercial failure, selling under 800,000 units, but is notable for its early attempt at 3D gaming.",
+            "order": 6,
+            "date": "1995"
+        },
+        {
+            "image": "assets/nintendo/nintendo_64.jpg",
+            "text": "Nintendo 64",
+            "description": "The Nintendo 64 introduced 3D gaming to home consoles with a 64-bit processor. It featured iconic titles like Super Mario 64 and The Legend of Zelda: Ocarina of Time, selling nearly 33 million units.",
+            "order": 7,
+            "date": "1996"
+        },
+        {
+            "image": "assets/nintendo/game_boy_color.jpg",
+            "text": "Game Boy Color",
+            "description": "The Game Boy Color added a color screen to the Game Boy line, maintaining backward compatibility. It became a massive success with the Pokémon series, contributing to over 118 million total Game Boy sales.",
+            "order": 8,
+            "date": "1998"
+        },
+        {
+            "image": "assets/nintendo/game_boy_advance.png",
+            "text": "Game Boy Advance",
+            "description": "The Game Boy Advance brought 32-bit gaming to handhelds, with improved graphics and a wider screen. It sold over 81 million units with popular titles like Pokémon Ruby and Sapphire.",
+            "order": 9,
+            "date": "2001"
+        },
+        {
+            "image": "assets/nintendo/gamecube.jpg",
+            "text": "GameCube",
+            "description": "The GameCube was Nintendo’s first console to use optical discs instead of cartridges. It introduced franchises like Animal Crossing and sold over 21 million units despite strong competition.",
+            "order": 10,
+            "date": "2001"
+        },
+        {
+            "image": "assets/nintendo/nintendo_ds.jpg",
+            "text": "Nintendo DS",
+            "description": "The Nintendo DS introduced dual-screen gaming with a touchscreen, revolutionizing handheld play. It became Nintendo’s best-selling system, with over 154 million units sold, thanks to games like Mario Kart DS.",
+            "order": 11,
+            "date": "2004"
+        },
+        {
+            "image": "assets/nintendo/wii.png",
+            "text": "Wii",
+            "description": "The Wii popularized motion controls with its Wii Remote, appealing to a wide audience. It sold over 101 million units, making it one of Nintendo’s most successful home consoles, with hits like Wii Sports.",
+            "order": 12,
+            "date": "2006"
+        },
+        {
+            "image": "assets/nintendo/nintendo_3ds.jpg",
+            "text": "Nintendo 3DS",
+            "description": "The Nintendo 3DS introduced glasses-free 3D gaming to handhelds. Despite a slow start, it sold over 75 million units with popular titles like The Legend of Zelda: A Link Between Worlds.",
+            "order": 13,
+            "date": "2011"
+        },
+        {
+            "image": "assets/nintendo/wii_u.jpg",
+            "text": "Wii U",
+            "description": "The Wii U featured a GamePad with a built-in screen for off-TV play, a precursor to the Switch. It struggled commercially, selling just over 13 million units, but had notable games like Super Mario 3D World.",
+            "order": 14,
+            "date": "2012"
+        },
+        {
+            "image": "assets/nintendo/switch.png",
+            "text": "Nintendo Switch",
+            "description": "The Nintendo Switch combined home and handheld gaming with its hybrid design. It became a massive success, selling over 140 million units, with blockbuster titles like The Legend of Zelda: Breath of the Wild.",
+            "order": 15,
+            "date": "2017"
+        },
+        {
+            "image": "assets/nintendo/switch2.jpg",
+            "text": "Nintendo Switch 2",
+            "description": "The Nintendo Switch 2 built on its predecessor’s hybrid design, allowing play in handheld, tabletop, or docked modes with magnetic Joy-Cons. It introduced a larger display and backward compatibility with Switch games, while also featuring exclusive titles like a new Mario Kart game. It aimed to continue Nintendo’s success in blending portable and home gaming.",
+            "order": 16,
+            "date": "2025"
+        }
+    ]
+}

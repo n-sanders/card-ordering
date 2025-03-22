@@ -7,61 +7,71 @@
             "image": "assets/history/stoneweapon.jpg", 
             "text": "Stone Age", 
             "description": "The Stone Age was when the earliest humans lived in small groups and used simple stone tools to hunt and gather food. They discovered fire, which helped them cook and stay warm. People also made cave paintings, like the ones found in Lascaux, France.", 
-            "order": 1 
+            "order": 1,
+            "date": "10,000 BC - 3,000 BC" 
         },
         { 
             "image": "assets/history/pottery.jpg", 
             "text": "Bronze Age", 
             "description": "The Bronze Age was a time when people mixed copper and tin to make bronze, a stronger metal for tools and weapons. Early civilizations like the Sumerians in Mesopotamia built cities and invented writing. Pottery became really useful for storing food and water.", 
-            "order": 2 
+            "order": 2,
+            "date": "3,000 BC - 1,000 BC" 
         },
         { 
             "image": "assets/history/blacksmith.jpg", 
             "text": "Iron Age", 
             "description": "The Iron Age was when people started using iron, which was tougher than bronze, to craft tools and weapons. Great civilizations like the Greeks and Celts built strong communities with this metal. Blacksmiths were important for shaping iron into useful things.", 
-            "order": 3 
+            "order": 3,
+            "date": "1,000 BC - 500 BC" 
         },
         { 
             "image": "assets/history/rome.jpg", 
             "text": "Classical Era", 
             "description": "The Classical Era is famous for the Roman Empire, which built huge cities, roads, and aqueducts to carry water. Ancient Greece was also big during this time, with philosophers like Socrates thinking about deep ideas. It was a golden age of art, learning, and democracy.", 
-            "order": 4 
+            "order": 4,
+            "date": "500 BC - 500 AD" 
         },
         { 
             "image": "assets/history/castle.jpg", 
             "text": "Medieval Era", 
             "description": "The Medieval Era, or Middle Ages, was a time of castles, knights, and kings in Europe. The Black Death, a terrible plague, spread and changed how people lived. The Vikings also explored and traded across the seas during this time.", 
-            "order": 5 
+            "order": 5,
+            "date": "500 AD - 1450 AD" 
         },
         { 
             "image": "assets/history/cathedral.jpg", 
             "text": "Renaissance", 
             "description": "The Renaissance was a time of exciting art, science, and learning all over Europe. Famous people like Leonardo da Vinci painted amazing pictures and invented new machines. Beautiful cathedrals and buildings were created, showing off big new ideas.", 
-            "order": 6 
+            "order": 6,
+            "date": "1450 AD - 1600 AD" 
         },
         { 
             "image": "assets/history/voyage.jpg", 
             "text": "Age of Exploration", 
             "description": "The Age of Exploration was when brave explorers like Christopher Columbus and Magellan sailed across oceans to find new lands. Ships used tools like the compass to travel far, reaching places like America and Asia. It was a time when the world got more connected.", 
-            "order": 7 
+            "order": 7,
+            "date": "1492 AD - 1760 AD" 
         },
         { 
             "image": "assets/history/steamengine.jpg", 
             "text": "Industrial Revolution", 
             "description": "The Industrial Revolution was when machines like the steam engine changed how things were made, from clothes to tools. Factories grew in cities, and trains and steamships made travel faster. Life shifted from farming to working in busy towns.", 
-            "order": 8 
+            "order": 8,
+            "date": "1760 AD - 1900 AD" 
         },
         { 
             "image": "assets/history/biplane.jpg", 
             "text": "Modern Era", 
             "description": "The Modern Era had huge events like World War I and II, and inventions like cars, airplanes, and electricity. People moved to bigger cities and started talking over telephones. It was a time when the world got faster with new technology.", 
-            "order": 9 
+            "order": 9,
+            "date": "1900 AD - 2000 AD" 
         },
         { 
             "image": "assets/history/computer.jpg", 
             "text": "Information Age", 
             "description": "The Information Age is our time, with computers and the internet connecting people everywhere. Smartphones, video games, and space missions to Mars are part of it. It's all about sharing information really fast, like how you're learning right now!", 
-            "order": 10 
+            "order": 10,
+            "date": "2000 AD - Present" 
         }
     ]
 }
