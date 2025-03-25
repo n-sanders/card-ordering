@@ -168,11 +168,15 @@ function renderPlaced() {
     placed.forEach((card, index) => {
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card';
-        cardDiv.innerHTML = `
-            <img src="${card.image}" alt="${card.text}">
-            <p>${card.text}</p>
-            <span class="date">${card.date}</span>
-        `;
+        let cardContent = '';
+        if (card.image) {
+            cardContent += `<img src="${card.image}" alt="${card.text}">`;
+        }
+        cardContent += `<p>${card.text}</p>`;
+        if (card.date) {
+            cardContent += `<span class="date">${card.date}</span>`;
+        }
+        cardDiv.innerHTML = cardContent;
         cardDiv.style.animationDelay = `${index * 0.1}s`;
         placedDiv.appendChild(cardDiv);
         addInsertionPoint(placedDiv, index + 1);
@@ -195,11 +199,27 @@ function addInsertionPoint(container, index) {
 function renderCurrent() {
     const currentDiv = document.getElementById('current-card');
     if (currentCard) {
-        currentDiv.innerHTML = `<p>${currentCard.text}</p><img src="${currentCard.image}" alt="${currentCard.text}"><p>${currentCard.description}</p>`;
+        let cardContent = `<p>${currentCard.text}</p>`;
+        if (currentCard.image) {
+            cardContent += `<img src="${currentCard.image}" alt="${currentCard.text}">`;
+        }
+        if (currentCard.description) {
+            cardContent += `<p>${currentCard.description}</p>`;
+        }
+        currentDiv.innerHTML = cardContent;
+        
+        // Add 'simple' class if card only has text
+        if (!currentCard.image && !currentCard.description) {
+            currentDiv.classList.add('simple');
+        } else {
+            currentDiv.classList.remove('simple');
+        }
+        
         currentDiv.style.transform = 'scale(0.8)';
         setTimeout(() => { currentDiv.style.transform = 'scale(1)'; }, 50);
     } else {
         currentDiv.innerHTML = '';
+        currentDiv.classList.remove('simple');
     }
 }
 

@@ -379,7 +379,7 @@ h1 {
 /* Current Card (Larger Portrait) */
 #current-card {
     width: 320px;
-    min-height: 550px;
+    min-height: 100px;
     max-height: 650px;
     border: none;
     border-radius: 15px;
@@ -395,29 +395,44 @@ h1 {
     padding: 15px;
 }
 
+#current-card:empty {
+    display: none;
+}
+
+#current-card p {
+    margin: 10px;
+    font-size: 1.2em;
+    color: var(--text);
+    text-align: center;
+    max-width: 100%;
+}
+
+#current-card p:first-child {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 15px 10px;
+}
+
 #current-card img {
     width: 250px;
     height: 250px;
     object-fit: cover;
     border-radius: 10px;
-    margin: 15px 0;
-}
-
-#current-card p:first-of-type {
-    font-size: 1.4em;
-    color: var(--text);
-    font-weight: 600;
     margin: 10px 0;
-    width: 100%;
-    text-align: center;
+    box-shadow: 0 4px 8px var(--shadow);
 }
 
-#current-card p:last-of-type {
-    margin: 15px 10px;
-    font-size: 1.1em;
-    color: var(--text);
-    line-height: 1.5;
-    text-align: left;
+/* Add a class for simple cards without images/description */
+#current-card.simple {
+    min-height: 80px;
+    width: 280px;
+    padding: 10px;
+    justify-content: center;
+}
+
+#current-card.simple p {
+    font-size: 1.3em;
+    margin: 0;
 }
 
 #message {
