@@ -1,0 +1,133 @@
+{
+    "title": "Key Events in Genesis",
+    "thumbnail": "assets/genesis/Genesis_Overview.jpg",
+    "description": "A sequence of the major events in the Book of Genesis, tracing the foundational stories of creation, sin, and the patriarchs.",
+    "cards": [
+      {
+        "image": "assets/genesis/Creation.jpg",
+        "text": "Creation",
+        "description": "God creates the heavens, earth, and humanity, establishing the world and its order.",
+        "order": 1,
+        "date": "Genesis 1-2"
+      },
+      {
+        "image": "assets/genesis/Fall.jpg",
+        "text": "Fall",
+        "description": "Adam and Eve disobey God, introducing sin and death into the world. Their expulsion from Eden marks the beginning of humanity’s struggles.",
+        "order": 2,
+        "date": "Genesis 3"
+      },
+      {
+        "image": "assets/genesis/Cain_Abel.jpg",
+        "text": "Cain and Abel",
+        "description": "Sin escalates as Cain murders Abel, showing the rapid spread of corruption. This event highlights the consequences of the Fall.",
+        "order": 3,
+        "date": "Genesis 4"
+      },
+      {
+        "image": "assets/genesis/Flood.jpg",
+        "text": "Flood",
+        "description": "God sends a flood to judge a wicked world, sparing Noah and his family. The ark and rainbow covenant reset humanity’s story.",
+        "order": 4,
+        "date": "Genesis 6-9"
+      },
+      {
+        "image": "assets/genesis/Babel.jpg",
+        "text": "Tower of Babel",
+        "description": "Humanity rebels by building a tower to the heavens. God scatters them with different languages, shaping the nations.",
+        "order": 5,
+        "date": "Genesis 11:1-9"
+      },
+      {
+        "image": "assets/genesis/Call_Abram.jpg",
+        "text": "Call of Abram",
+        "description": "God calls Abram to leave his home, promising to make him a great nation. This begins the story of the patriarchs.",
+        "order": 6,
+        "date": "Genesis 12"
+      },
+      {
+        "image": "assets/genesis/Covenant_Abram.jpg",
+        "text": "Covenant of Abram",
+        "description": "God formalizes His promise to Abram, renaming him Abraham. This covenant lays the foundation for Israel’s identity.",
+        "order": 7,
+        "date": "Genesis 15, 17"
+      },
+      {
+        "image": "assets/genesis/Birth_Ishmael.jpg",
+        "text": "Birth of Ishmael",
+        "description": "Hagar bears Ishmael to Abraham, a result of impatience for God’s promise. This birth foreshadows future conflict.",
+        "order": 8,
+        "date": "Genesis 16"
+      },
+      {
+        "image": "assets/genesis/Birth_Isaac.jpg",
+        "text": "Birth of Isaac",
+        "description": "Sarah gives birth to Isaac, the long-awaited child of promise. This fulfills God’s covenant with Abraham.",
+        "order": 9,
+        "date": "Genesis 21"
+      },
+      {
+        "image": "assets/genesis/Sacrifice_Isaac.jpg",
+        "text": "Sacrifice of Isaac",
+        "description": "God tests Abraham by commanding Isaac’s sacrifice, only to provide a substitute. This proves Abraham’s faith.",
+        "order": 10,
+        "date": "Genesis 22"
+      },
+      {
+        "image": "assets/genesis/Jacob_Esau.jpg",
+        "text": "Jacob and Esau",
+        "description": "Twins Jacob and Esau are born, and their rivalry begins with Esau trading his birthright for a bowl of soup. This sets up future trickery.",
+        "order": 11,
+        "date": "Genesis 25:19-34"
+      },
+      {
+        "image": "assets/genesis/Trickery_Jacob.jpg",
+        "text": "Trickery of Jacob",
+        "description": "Jacob deceives Isaac to receive Esau’s blessing, a pivotal act that aligns with God’s earlier promise, though achieved through cunning means.",
+        "order": 12,
+        "date": "Genesis 27"
+      },
+      {
+        "image": "assets/genesis/Vision_Bethel.jpg",
+        "text": "Jacob’s Vision at Bethel",
+        "description": "God appears to Jacob in a dream of a ladder stretching between heaven and earth, with angels ascending and descending. God renews the covenant in this vision. This affirms Jacob’s role in the story.",
+        "order": 13,
+        "date": "Genesis 28"
+      },
+      {
+        "image": "assets/genesis/Trickery_Laban.jpg",
+        "text": "Trickery of Laban",
+        "description": "After Jacob works for seven years to marry Rachel, Laban deceives Jacob into marrying Leah first, extending Jacob’s labor. This mirrors Jacob’s own deceptive past.",
+        "order": 14,
+        "date": "Genesis 29-31"
+      },
+      {
+        "image": "assets/genesis/Birth_Joseph.jpg",
+        "text": "Birth of Joseph",
+        "description": "Rachel, the wife whom Jacob loved most, gives birth to Joseph, who will become a pivotal figure. His arrival marks a turning point for the family.",
+        "order": 15,
+        "date": "Genesis 30:22-24"
+      },
+      {
+        "image": "assets/genesis/Joseph_Slavery.jpg",
+        "text": "Joseph Sold into Slavery",
+        "description": "Joseph’s brothers sell him into slavery out of jealousy due to their father's favoritism. This betrayal sets him on a path to Egypt.",
+        "order": 16,
+        "date": "Genesis 37"
+      },
+      {
+        "image": "assets/genesis/Joseph_Rise.jpg",
+        "text": "Joseph’s Rise in Egypt",
+        "description": "With God's favor, Joseph rises from prisoner to Pharaoh’s second-in-command through Joseph's wisdom, integrity, and interpretation of dreams. This prepares for a coming famine.",
+        "order": 17,
+        "date": "Genesis 39-41"
+      },
+      {
+        "image": "assets/genesis/Famine_Goshen.jpg",
+        "text": "Famine and Relocation to Goshen",
+        "description": "A severe famine drives Joseph’s brothers to Egypt for grain, leading to a dramatic reunion with the brother they betrayed. Joseph forgives them and orchestrates their relocation to Goshen, where Jacob’s family settles.",
+        "order": 18,
+        "date": "Genesis 42-47"
+      }
+    ]
+  }
